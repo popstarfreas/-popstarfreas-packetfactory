@@ -1,9 +1,9 @@
 {
-  "name": "@popstarfreas/dimensions",
+  "name": "@popstarfreas/packetfactory",
   "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": "git://github.com/popstarfreas/Dimensions.git"
+    "url": "git://github.com/popstarfreas/packetfactory-ts.git"
   },
   "description": "",
   "main": "index.js",

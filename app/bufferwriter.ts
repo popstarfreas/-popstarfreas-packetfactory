@@ -39,15 +39,27 @@ class BufferWriter implements Writer {
         return this;
     }
 
-    public packUInt64(uint64: number) {
-        this.packUInt32(uint64 >> 8);
-        this.packUInt32(uint64 & 0x00ff);
+    public packInt64(int64: bigint) {
+        this._buffer.writeBigInt64LE(int64, this._offset);
+        this._offset += 8;
+        return this;
+    }
+
+    public packUInt64(uint64: bigint) {
+        this._buffer.writeBigUInt64LE(uint64, this._offset);
+        this._offset += 8;
         return this;
     }
 
     public packSingle(single: number) {
         this._buffer.writeFloatLE(single, this._offset);
         this._offset += 4;
+        return this;
+    }
+
+    public packDouble(double: number) {
+        this._buffer.writeDoubleLE(double, this._offset);
+        this._offset += 8;
         return this;
     }
 

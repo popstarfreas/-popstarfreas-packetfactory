@@ -147,15 +147,27 @@ class BufferReader {
      *
      * @return The unsigned int64 removed from the data
      */
-    public readUInt64(): number {
-        const low = this.readUInt32();
-        const high = this.readUInt32();
+    public readUInt64(): bigint {
+        const uint64 = this._data.readBigUInt64LE(this.head);
+        this.head += 8;
 
-        return low + high * 4294967296.0;
+        return uint64;
     }
 
     /**
-     * Reads 4 bytes from the data converting it into a single
+     * Reads 8 bytes from the data, converting it into an unsigned int64
+     *
+     * @return The unsigned int64 removed from the data
+     */
+    public readInt64(): bigint {
+        const int64 = this._data.readBigInt64LE(this.head);
+        this.head += 8;
+
+        return int64;
+    }
+
+    /**
+     * Alias for readFloat()
      *
      * @return The single removed from the data
      */
@@ -164,6 +176,18 @@ class BufferReader {
         this.head += 4;
 
         return single;
+    }
+
+    /**
+     * Reads 8 bytes from the data converting it into a double
+     *
+     * @return The double removed from the data
+     */
+    public readDouble(): number {
+        const double = this._data.readDoubleLE(this.head);
+        this.head += 8;
+
+        return double;
     }
 
     /**

@@ -15,7 +15,7 @@ class PacketReader extends BufferReader {
 
     /**
      * Gets the packet type
-     * 
+     *
      * @return The packet type of the packet
      */
     public get type(): number {

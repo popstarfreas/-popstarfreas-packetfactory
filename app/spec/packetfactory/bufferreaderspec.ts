@@ -93,28 +93,32 @@ describe("bufferreader", () => {
     describe("uint64", () => {
         it("should correctly read a small uint64", () => {
             let reader = new BufferReader(Buffer.from("3200000000000000", "hex"));
-            expect(reader.readUInt64()).toEqual(50);
+            expect(reader.readUInt64()).toEqual(50n);
         });
 
         it("should correctly read maximum uint16", () => {
             let reader = new BufferReader(Buffer.from("ffff000000000000", "hex"));
-            expect(reader.readUInt64()).toEqual(65535);
+            expect(reader.readUInt64()).toEqual(65535n);
         });
 
         it("should correctly read maximum uint32", () => {
             let reader = new BufferReader(Buffer.from("ffffffff00000000", "hex"));
-            expect(reader.readUInt64()).toEqual(4294967295);
+            expect(reader.readUInt64()).toEqual(4294967295n);
         });
 
         it("should correctly read maximum uint64", () => {
             let reader = new BufferReader(Buffer.from("ffffffffffffffff", "hex"));
-            expect(reader.readUInt64()).toEqual(18446744073709551615);
+            expect(reader.readUInt64()).toEqual(18446744073709551615n);
         });
 
         it("should correctly read zero uint64", () => {
             let reader = new BufferReader(Buffer.from("0000000000000000", "hex"));
-            expect(reader.readUInt64()).toEqual(0);
+            expect(reader.readUInt64()).toEqual(0n);
         });
+    });
+
+    describe("int64", () => {
+        // TODO
     });
 
     describe("int16", () => {
@@ -211,6 +215,10 @@ describe("bufferreader", () => {
             let reader = new BufferReader(Buffer.from("000000bf", "hex"));
             expect(reader.readSingle()).toEqual(-0.5);
         });
+    });
+
+    describe("double", () => {
+        // TODO
     });
 
     describe("strings", () => {

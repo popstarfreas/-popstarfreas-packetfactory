@@ -26,7 +26,7 @@ class PacketWriter implements Writer {
         for (const item of this._queue) {
             (writer as any)[item.method](item.value);
         }
-        
+
         this._data = writer.data;
     }
 
@@ -60,7 +60,13 @@ class PacketWriter implements Writer {
         return this;
     }
 
-    public packUInt64(uint64: number) {
+    public packInt64(int64: bigint) {
+        this._queue.push({method: "packInt64", value: int64});
+        this._size += 8;
+        return this;
+    }
+
+    public packUInt64(uint64: bigint) {
         this._queue.push({method: "packUInt64", value: uint64});
         this._size += 8;
         return this;
@@ -72,18 +78,24 @@ class PacketWriter implements Writer {
         return this;
     }
 
+    public packDouble(double: number) {
+        this._queue.push({method: "packDouble", value: double});
+        this._size += 8;
+        return this;
+    }
+
     public packByte(byte: number) {
         this._queue.push({method: "packByte", value: byte});
         this._size += 1;
         return this;
     }
-    
+
     public packSByte(byte: number) {
         this._queue.push({method: "packSByte", value: byte});
         this._size += 1;
         return this;
     }
-    
+
     public packBytes(bytes: number[]) {
         this._queue.push({method: "packBytes", value: bytes});
         this._size += bytes.length;
@@ -124,7 +136,7 @@ class PacketWriter implements Writer {
         this.packByte(color.B);
         return this;
     }
-    
+
     public get data() {
         if (this._data === null) {
             this.compile();

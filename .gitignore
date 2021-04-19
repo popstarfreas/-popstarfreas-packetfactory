@@ -4,3 +4,5 @@ npm-debug.log
 .vscode
 .tscache
 module/
+.merlin
+lib/

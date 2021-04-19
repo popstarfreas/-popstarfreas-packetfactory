@@ -10,7 +10,7 @@
   "scripts": {
     "build": "tsc -p ./",
     "test": "npm run build && jasmine --config=jasmine.json",
-    "makemodule": "rm -rf ./module/* && tsc --declaration -p ./ && mv -v build/* module && cp package.json module/package.json",
+    "makemodule": "rm -rf ./module/* && tsc --declaration -p ./ && mv -v build/* module && cp package.json module/package.json && cp -r src/ module/ && cp bsconfig.json module/bsconfig.json",
     "makerelease": "./makerelease.sh"
   },
   "author": "",

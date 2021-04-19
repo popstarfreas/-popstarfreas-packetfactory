@@ -1,0 +1,9 @@
+{
+    "name": "@popstarfreas/packetfactory",
+    "namespace": "PacketFactory",
+    "version": "1.0.0",
+    "sources": {
+        "dir" : "src",
+        "subdirs" : true
+    }
+}

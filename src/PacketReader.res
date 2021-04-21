@@ -1,8 +1,8 @@
 type t
-@bs.new @bs.module("@popstarfreas/packetfactory/packetreader") external make: Buffer.t => t = "default"
+@bs.new @bs.module("@popstarfreas/packetfactory/packetreader") external make: NodeJs.Buffer.t => t = "default"
 @bs.send external readByte: t => int = "readByte"
 @bs.send external readBytes: t => array<int> = "readBytes"
-@bs.send external readBuffer: t => Buffer.t = "readBuffer"
+@bs.send external readBuffer: t => NodeJs.Buffer.t = "readBuffer"
 @bs.send external readColor: t => Color.t = "readColor"
 @bs.send external readSByte: t => int = "readSByte"
 @bs.send external readInt16: t => int = "readInt16"

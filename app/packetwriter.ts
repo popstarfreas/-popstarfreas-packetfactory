@@ -9,7 +9,7 @@ interface QueueItem {
     value: any;
 }
 
-type WriterCls = new (size: number) => Writer;
+type WriterCls = new (buffer: Buffer) => Writer;
 
 class PacketWriter implements Writer {
     private _queue: QueueItem[] = [];
@@ -22,7 +22,7 @@ class PacketWriter implements Writer {
     }
 
     private compile() {
-        const writer = new this._writerCls(this._size);
+        const writer = new this._writerCls(Buffer.allocUnsafe(this._size));
         for (const item of this._queue) {
             (writer as any)[item.method](item.value);
         }

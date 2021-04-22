@@ -7,8 +7,8 @@ class BufferWriter implements Writer {
     protected _buffer: Buffer;
     protected _offset: number = 0;
 
-    constructor(size: number) {
-        this._buffer = Buffer.allocUnsafe(size);
+    constructor(buffer: Buffer) {
+        this._buffer = buffer;
     }
 
     public changeOffset(offset: number) {
@@ -127,6 +127,10 @@ class BufferWriter implements Writer {
 
     public get data() {
         return this._buffer;
+    }
+
+    public get packedLength() {
+        return this._offset;
     }
 
     public get slicedData() {

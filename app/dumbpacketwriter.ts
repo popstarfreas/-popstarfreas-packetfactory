@@ -1,10 +1,8 @@
 import BufferWriter from "./bufferwriter";
+import Color from "./color";
+import NetworkText from "./networktext";
 
 class PacketWriter extends BufferWriter {
-    constructor(size: number) {
-        super(size);
-    }
-
     private updateSize() {
         const offset = this._offset;
         this._offset = 0;
@@ -75,6 +73,19 @@ class PacketWriter extends BufferWriter {
     public packString(str: string) {
         super.packString(str);
         this.updateSize();
+        return this;
+    }
+
+    public packNetworkText(networkText: NetworkText) {
+        this.packByte(networkText.mode);
+        this.packString(networkText.text);
+        return this;
+    }
+
+    public packColor(color: Color) {
+        this.packByte(color.R);
+        this.packByte(color.G);
+        this.packByte(color.B);
         return this;
     }
 }

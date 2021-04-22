@@ -1,6 +1,7 @@
+// This packet writer automatically allocates a buffer
 type untypedT
 type t
-@bs.new @bs.module("@popstarfreas/packetfactory/dumbpacketwriter") external make: (NodeJs.Buffer.t) => untypedT = "default"
+@bs.new @bs.module("@popstarfreas/packetfactory/packetwriter") external make: unit => untypedT = "default"
 
 @bs.send external setType_: untypedT => int => t = "setType"
 let setType = (untypedT, packetType) => setType_(untypedT, packetType)
@@ -19,5 +20,4 @@ let setType = (untypedT, packetType) => setType_(untypedT, packetType)
 @bs.send external packBuffer: t => NodeJs.Buffer.t => t = "packBuffer"
 @bs.send external packNetworkText: t => NetworkText.t => t = "packNetworkText"
 @bs.send external packColor: t => Color.t => t = "packColor"
-@bs.get external packedLength: t => int = "packedLength"
-@bs.get external slicedData: t => NodeJs.Buffer.t = "slicedData"
+@bs.get external data: t => NodeJs.Buffer.t = "data"

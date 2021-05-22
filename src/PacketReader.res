@@ -14,3 +14,5 @@ type t
 @bs.send external readSingle: t => float = "readSingle"
 @bs.send external readString: t => string = "readString"
 @bs.send external readNetworkText: t => NetworkText.t = "readNetworkText"
+@bs.get external getHead: t => int = "head"
+@bs.get external getBytesLeft: t => int = "bytesLeft"

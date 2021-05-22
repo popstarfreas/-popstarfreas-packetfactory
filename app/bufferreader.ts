@@ -14,6 +14,10 @@ class BufferReader {
         this._data = data;
     }
 
+    public get bytesLeft() {
+        return this._data.length - this.head;
+    }
+
     /**
      * Gets the data still stored by the reader
      *

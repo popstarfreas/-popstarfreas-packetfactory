@@ -7,6 +7,6 @@
         "subdirs" : true
     },
     "bs-dependencies": [
-        "rescript-nodejs"
+        "@popstarfreas/rescript-nodejs"
     ]
 }

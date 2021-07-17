@@ -17,3 +17,4 @@ type t
 @bs.send external packNetworkText: t => NetworkText.t => t = "packNetworkText"
 @bs.send external packColor: t => Color.t => t = "packColor"
 @bs.get external data: t => NodeJs.Buffer.t = "data"
+@bs.get external slicedData: t => NodeJs.Buffer.t = "slicedData"

@@ -1,6 +1,6 @@
 {
   "name": "@popstarfreas/packetfactory",
-  "version": "5.0.0",
+  "version": "6.0.0",
   "repository": {
     "type": "git",
     "url": "git://github.com/popstarfreas/packetfactory-ts.git"
@@ -10,7 +10,7 @@
   "scripts": {
     "build": "tsc -p ./",
     "test": "npm run build && jasmine --config=jasmine.json",
-    "makemodule": "rm -rf ./module/* && tsc --declaration -p ./ && mv -v build/* module && cp package.json module/package.json && cp -r src/ module/ && cp bsconfig.json module/bsconfig.json",
+    "makemodule": "rm -rf ./module/* && tsc --declaration -p ./ && mv -v build/* module && cp package.json module/package.json && cp -r src/ module/ && cp rescript.json module/rescript.json",
     "makerelease": "./makerelease.sh"
   },
   "author": "",

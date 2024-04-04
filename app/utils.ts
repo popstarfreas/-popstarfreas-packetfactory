@@ -20,7 +20,7 @@ export function bufferToText(buf: Buffer): string {
 }
 
 export function textToBuffer(str: string): Buffer {
-  const writer = new PacketWriter(BufferWriter);
+  const writer = new BufferWriter(Buffer.allocUnsafe(str.length));
   for (var i = 0, l = str.length; i < l; i++) {
     writer.packByte(str.charCodeAt(i));
   }
